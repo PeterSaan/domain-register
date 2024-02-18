@@ -47,7 +47,7 @@
         <h2 class="fw-semibold mb-5">
             Kontaktandmed
         </h2>
-        <form onsubmit="return next()" action="/views/insInfo.html">
+        <form action="ordered.html" method="get">
             <div class="col mx-2 fw-light">
                 <div class="row">
                     <div class="col">
@@ -155,9 +155,9 @@
                     <label for="addInfo" class="form-label d-flex justify-content-start">
                         Lisainfo (valikuline)
                     </label>
-                    <textarea name="addInfo" class="form-control mb-5 border-3 rounded-4" id="addInfo" aria-label="addInfo" style="width: 40vw;"></textarea>
+                    <textarea name="addInfo" class="form-control mb-5 border-3 rounded-4" id="addInfo" aria-label="addInfo" style="width: 40vw; max-height: 37vh;"></textarea>
                 </div>
-                <div class="justify-content-end me-2 text-center lh-lg" style="border: 0.5px solid #d9d9d9; background-color: #d9d9d9; width: 38vw;">
+                <div class="justify-content-end me-2 text-center lh-lg" style="border: 0.5px solid #d9d9d9; background-color: #d9d9d9; width: 38vw; width: 38vw; max-height: 40vh;">
                     <div class="mt-5 fs-4">    
                         kokkuvõte tellimusest
                     </div>
@@ -188,10 +188,6 @@
                 document.getElementById("businessNr").required = false;
             }
         });
-        function next() {
-            window.location.href = "./insInfoErr.html";
-            return false;
-        }
     </script>
 </body>
 </html>

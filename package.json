@@ -1,5 +1,6 @@
 {
   "name": "domain-register",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,5 +9,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.0.3"
+  }
 }
