@@ -2,8 +2,8 @@ import 'dotenv/config';
 
 /** @type { import("drizzle-kit").Config } */
 export default {
-    schema: './src/schema.ts',
-    out: './drizzle',
+    schema: './database/schema.js',
+    out: './database/migrations',
     driver: 'mysql2',
     dbCredentials: {
         host: 'localhost',

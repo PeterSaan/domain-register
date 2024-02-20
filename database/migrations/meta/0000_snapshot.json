@@ -1,0 +1,16 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "id": "d9da75c7-8b03-4797-a14e-4ef2cd518c9e",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {},
+  "schemas": {
+    "domain": "domain",
+    "owner": "owner"
+  },
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
