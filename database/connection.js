@@ -1,16 +1,12 @@
 import 'dotenv/config';
-import { createConnection } from 'mysql';
+import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 
-const connection = createConnection({
-    host: 'localhost',
-    user: 'root',
+const connection = await mysql.createConnection({
+    host: "localhost",
+    user: "root",
     password: process.env.MYSQL_DB_PASSWORD,
-    database: 'domain_register'
+    database: process.env.MYSQL_DB_NAME
 });
 
-connection.connect((err) => {
-    if (err) throw err;
-    console.log('Connected to the database');
-});
-
-connection.end();
+export const db = drizzle(connection);
