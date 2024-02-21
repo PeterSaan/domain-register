@@ -20,16 +20,21 @@ app.get('/', (req, res) => {
 
 app.get('/insInfo.html', async (req, res) => {
     res.sendFile(path.join(dirName + '/public/insInfo.html'));
-    console.log(req.query);
-    // await db.insert(domain).values({ url: `https://${req.query.domain}.ee` });
+    if (req.query.domain !== undefined || req.query.domain.trim() !== '') {
+        await db.insert(domain).values({ url: `https://${req.query.domain}.ee` });
+        console.log("Domain added to database");
+    } else {
+        console.log('Domain is empty');
+        res.sendFile(path.join(dirName + '/public/index.html'));
+    }
 });
 
 app.get('/ordered.html', async (req, res) => {
     res.sendFile(path.join(dirName + '/public/ordered.html'));
-    console.log(req.query[firstName]);
-    // Object.keys(req.query).forEach(async (e) => {
-    //     await db.insert(owner).values({ e: req.query[e] });
-    // });
+    console.log(req.query);
+    Object.keys(req.query).forEach(async (e) => {
+        await db.insert(owner).values({ e: `${req.query[e]}` });
+    });
 });
 
 

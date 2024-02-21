@@ -1,11 +1,11 @@
-import { bigint, mysqlDatabase, varchar } from "drizzle-orm/mysql-core";
+import { bigint, mysqlTable, varchar } from "drizzle-orm/mysql-core";
 
-export const domain = mysqlDatabase('domain', {
+export const domain = mysqlTable('domain', {
     id: bigint('id', { mode: 'number'}).primaryKey().autoincrement(),
     url: varchar('url', { length: 100 }).notNull()
 });
 
-export const owner = mysqlDatabase('owner', {
+export const owner = mysqlTable('owner', {
     id: bigint('id', { mode: 'number'}).primaryKey().autoincrement(),
     name: varchar('name', { length: 256 }).notNull(),
     email: varchar('email', { length: 266 }).notNull(),
