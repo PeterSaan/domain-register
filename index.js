@@ -19,12 +19,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/insInfo.html', async (req, res) => {
+    const domainName = req.query.domain;
+    console.log(domainName);
     res.sendFile(path.join(dirName + '/public/insInfo.html'));
-    if (req.query.domain !== undefined || req.query.domain.trim() !== '') {
-        await db.insert(domain).values({ url: `https://${req.query.domain}.ee` });
-        console.log("Domain added to database");
-    } else {
-        console.log('Domain is empty');
+    if (typeof domainName !== undefined || domainName !== '') {
+        await db.insert(domain).values({ url: `https://${domainName}.ee` });
+        console.log(`Domain '${domainName}' added to database`);
+    } else if (typeof domainName == undefined || domainName == '') {
+        console.log(`Domain '${domainName}' isn't an apliccable domain name`);
         res.sendFile(path.join(dirName + '/public/index.html'));
     }
 });
