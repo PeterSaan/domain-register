@@ -6,7 +6,8 @@ CREATE TABLE `domain` (
 --> statement-breakpoint
 CREATE TABLE `owner` (
 	`id` bigint AUTO_INCREMENT NOT NULL,
-	`name` varchar(256) NOT NULL,
+	`first_name` varchar(130) NOT NULL,
+	`last_name` varchar(130) NOT NULL,
 	`email` varchar(266) NOT NULL,
 	`phone` varchar(20),
 	`address` varchar(100) NOT NULL,

@@ -7,7 +7,8 @@ export const domain = mysqlTable('domain', {
 
 export const owner = mysqlTable('owner', {
     id: bigint('id', { mode: 'number'}).primaryKey().autoincrement(),
-    name: varchar('name', { length: 256 }).notNull(),
+    firstName: varchar('first_name', { length: 130 }).notNull(),
+    lastName: varchar('last_name', { length: 130 }).notNull(),
     email: varchar('email', { length: 266 }).notNull(),
     phone: varchar('phone', { length: 20 }),
     address: varchar('address', { length: 100 }).notNull(),
@@ -16,6 +17,6 @@ export const owner = mysqlTable('owner', {
     state: varchar('state', { length: 100 }).notNull(),
     postcode: varchar('postcode', { length: 20 }).notNull(),
     country: varchar('country', { length: 100 }).notNull(),
-    business_name: varchar('business_name', { length: 100 }),
-    business_registration_number: varchar('business_registration_number', { length: 100 })
+    businessName: varchar('business_name', { length: 100 }),
+    businessNr: varchar('business_registration_number', { length: 100 })
 });

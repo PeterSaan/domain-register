@@ -19,24 +19,28 @@ app.get('/', (req, res) => {
 });
 
 app.get('/insInfo.html', async (req, res) => {
-    const domainName = req.query.domain;
-    console.log(domainName);
-    res.sendFile(path.join(dirName + '/public/insInfo.html'));
-    if (typeof domainName !== undefined || domainName !== '') {
+    let domainName = req.query.domain;
+
+    if (domainName !== undefined && domainName.trim() !== '') {
         await db.insert(domain).values({ url: `https://${domainName}.ee` });
         console.log(`Domain '${domainName}' added to database`);
-    } else if (typeof domainName == undefined || domainName == '') {
+    } else if (domainName === undefined || domainName.trim() === '') {
         console.log(`Domain '${domainName}' isn't an apliccable domain name`);
         res.sendFile(path.join(dirName + '/public/index.html'));
+        return;
     }
+    res.sendFile(path.join(dirName + '/public/insInfo.html'));
 });
 
 app.get('/ordered.html', async (req, res) => {
     res.sendFile(path.join(dirName + '/public/ordered.html'));
-    console.log(req.query);
+    let values = {};
     Object.keys(req.query).forEach(async (e) => {
-        await db.insert(owner).values({ e: `${req.query[e]}` });
+        if(`${req.query[e]}`.trim() !== '') {
+             values[e] = req.query[e].trim()
+        }
     });
+    await db.insert(owner).values(values);
 });
 
 
